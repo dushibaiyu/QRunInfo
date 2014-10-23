@@ -91,7 +91,7 @@ public:
     static QList<VolumeInfo>  mountedVolumes();
     static QList<ProcessInfo>  runningProcesses();
     static bool  killProcess(const ProcessInfo &process, int msecs = 30000);
-    static bool   pathIsOnLocalDevice(const QString &path);
+    static bool  pathIsOnLocalDevice(const QString &path);
 };
 
 QT_BEGIN_NAMESPACE
