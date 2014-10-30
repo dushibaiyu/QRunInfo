@@ -41,8 +41,10 @@
 
 #ifndef LINK_H
 #define LINK_H
-
+#include "qruninfo_global.h"
 #include <QString>
+
+QRUNINFO_NAMEPASE_BEGIN
 
 class Link
 {
@@ -59,4 +61,5 @@ private:
     QString m_path;
 };
 
+QRUNINFO_NAMEPASE_END
 #endif // LINK_H

@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2013 Klaralvdalens Datakonsult AB (KDAB)
 ** Contact: http://www.qt-project.org/legal
@@ -44,6 +44,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
+QRUNINFO_NAMEPASE_BEGIN
 
 class KDSelfRestarter::Private
 {
@@ -104,3 +105,5 @@ bool KDSelfRestarter::restartOnQuit()
 {
     return Private::instance ? Private::instance->d->restartOnQuit : false;
 }
+
+QRUNINFO_NAMEPASE_END

@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2013 Klaralvdalens Datakonsult AB (KDAB)
 ** Contact: http://www.qt-project.org/legal
@@ -48,6 +48,8 @@
 #include <windows.h>
 #endif
 
+QRUNINFO_NAMEPASE_BEGIN
+
 class KDLockFile::Private
 {
 public:
@@ -68,4 +70,5 @@ private:
     bool locked;
 };
 
+QRUNINFO_NAMEPASE_END
 #endif // LOCKFILE_P_H

@@ -45,13 +45,14 @@
 #include "qruninfo_global.h"
 #include <QWidget>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 class QRUNINFOSHARED_EXPORT AdminAuthorization
 {
 public:
-    static bool ishasAdminRights();
+    static bool hasAdminRights();
     static bool execute(QWidget *parent, const QString &programs, const QStringList &arguments);
 };
 
-
-
+QRUNINFO_NAMEPASE_END
 #endif // ADMINAUTHORIZATION_H

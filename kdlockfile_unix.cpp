@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2013 Klaralvdalens Datakonsult AB (KDAB)
 ** Contact: http://www.qt-project.org/legal
@@ -49,6 +49,8 @@
 
 #include <unistd.h>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 KDLockFile::Private::~Private()
 {
     unlock();
@@ -96,3 +98,5 @@ bool KDLockFile::Private::unlock()
         errorString = QObject::tr("Could not unlock lock file %1: %2").arg(filename, QLatin1String(strerror(errno)));
     return !locked;
 }
+
+QRUNINFO_NAMEPASE_END

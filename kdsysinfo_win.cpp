@@ -48,6 +48,8 @@
 #include <psapi.h>
 #include <tlhelp32.h>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 const int KDSYSINFO_PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
 
 quint64  QRunInfo::installedMemory()
@@ -136,3 +138,4 @@ QList<ProcessInfo>  QRunInfo::runningProcesses()
     return param.processes;
 }
 
+QRUNINFO_NAMEPASE_END

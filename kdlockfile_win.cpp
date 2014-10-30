@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2013 Klaralvdalens Datakonsult AB (KDAB)
 ** Contact: http://www.qt-project.org/legal
@@ -45,6 +45,8 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QFileInfo>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 KDLockFile::Private::~Private()
 {
     unlock();
@@ -85,3 +87,5 @@ bool KDLockFile::Private::unlock()
     }
     return true;
 }
+
+QRUNINFO_NAMEPASE_END

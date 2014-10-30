@@ -46,6 +46,8 @@
 
 #include <QtCore/QString>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 class QRUNINFOSHARED_EXPORT VolumeInfo
 {
 public:
@@ -98,7 +100,10 @@ QT_BEGIN_NAMESPACE
 class QDebug;
 QT_END_NAMESPACE
 
-QDebug operator<<(QDebug dbg, VolumeInfo volume);
-QDebug operator<<(QDebug dbg, ProcessInfo process);
+QRUNINFO_NAMEPASE_END
+
+QDebug operator<<(QDebug dbg, QRunInfo::VolumeInfo volume);
+QDebug operator<<(QDebug dbg, QRunInfo::ProcessInfo process);
+
 
 #endif // KDSYSINFO_H

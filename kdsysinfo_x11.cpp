@@ -49,6 +49,8 @@
 #include <QtCore/QDir>
 #include <QtCore/QFileInfo>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 quint64 QRunInfo::installedMemory()
 {
 #ifdef Q_OS_LINUX
@@ -147,3 +149,4 @@ bool QRunInfo::killProcess(const ProcessInfo &process, int msecs)
     return true;
 }
 
+QRUNINFO_NAMEPASE_END

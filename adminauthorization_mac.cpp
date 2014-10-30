@@ -49,6 +49,7 @@
 
 #include <unistd.h>
 
+QRUNINFO_NAMEPASE_BEGIN
 
 bool AdminAuthorization::execute(QWidget *, const QString &program, const QStringList &arguments)
 {
@@ -84,7 +85,9 @@ bool AdminAuthorization::execute(QWidget *, const QString &program, const QStrin
     return status == errAuthorizationSuccess;
 }
 
-bool AdminAuthorization::ishasAdminRights()
+bool AdminAuthorization::hasAdminRights()
 {
     return geteuid() == 0;
 }
+
+QRUNINFO_NAMEPASE_END

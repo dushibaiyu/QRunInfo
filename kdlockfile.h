@@ -44,6 +44,8 @@
 
 #include "qruninfo_global.h"
 
+QRUNINFO_NAMEPASE_BEGIN
+
 class QRUNINFOSHARED_EXPORT KDLockFile
 {
 public:
@@ -61,4 +63,5 @@ private:
     Private *d;
 };
 
+QRUNINFO_NAMEPASE_END
 #endif // KDTOOLS_KDLOCKFILE_H

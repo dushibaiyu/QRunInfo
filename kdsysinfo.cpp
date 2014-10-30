@@ -44,6 +44,8 @@
 #include <QtCore/QDebug>
 #include <QtCore/QDir>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 struct PathLongerThan
 {
     bool operator()(const VolumeInfo &lhs, const VolumeInfo &rhs) const
@@ -155,12 +157,16 @@ bool VolumeInfo::operator==(const VolumeInfo &other) const
     return m_volumeDescriptor == other.m_volumeDescriptor;
 }
 
-QDebug operator<<(QDebug dbg, VolumeInfo volume)
+QRUNINFO_NAMEPASE_END
+
+QDebug operator<<(QDebug dbg,  QRunInfo::VolumeInfo volume)
 {
     return dbg << "KDUpdater::Volume(" << volume.mountPath() << ")";
 }
 
-QDebug operator<<(QDebug dbg, ProcessInfo process)
+QDebug operator<<(QDebug dbg,  QRunInfo::ProcessInfo process)
 {
     return dbg << "KDUpdater::ProcessInfo(" << process.id << ", " << process.name << ")";
 }
+
+

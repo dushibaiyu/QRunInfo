@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2013 Klaralvdalens Datakonsult AB (KDAB)
 ** Contact: http://www.qt-project.org/legal
@@ -46,6 +46,8 @@
 
 #include <QString>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 class QRUNINFOSHARED_EXPORT KDRunOnceChecker
 {
 public:
@@ -61,4 +63,5 @@ private:
     Private *d;
 };
 
+QRUNINFO_NAMEPASE_END
 #endif // KDTOOLS_RUNONCECHECKER_H

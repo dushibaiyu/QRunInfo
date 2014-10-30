@@ -50,6 +50,8 @@
 
 #include <algorithm>
 
+QRUNINFO_NAMEPASE_BEGIN
+
 class KDRunOnceChecker::Private
 {
 public:
@@ -137,3 +139,5 @@ bool KDRunOnceChecker::isRunning(Dependencies depends)
 
     return running;
 }
+
+QRUNINFO_NAMEPASE_END

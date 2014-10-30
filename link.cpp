@@ -1,4 +1,4 @@
-/**************************************************************************
+﻿/**************************************************************************
 **
 ** Copyright (C) 2012-2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
@@ -88,6 +88,8 @@ typedef struct _REPARSE_DATA_BUFFER {
 
 #endif
 
+
+QRUNINFO_NAMEPASE_BEGIN
 
 class FileHandleWrapper
 {
@@ -305,3 +307,5 @@ bool Link::remove()
     return removeLnSymlink(m_path);
 #endif
 }
+
+QRUNINFO_NAMEPASE_END

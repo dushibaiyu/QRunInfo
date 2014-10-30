@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2013 Klaralvdalens Datakonsult AB (KDAB)
 ** Contact: http://www.qt-project.org/legal
@@ -42,6 +42,7 @@
 #include "kdlockfile.h"
 
 #include "kdlockfile_p.h"
+QRUNINFO_NAMEPASE_BEGIN
 
 KDLockFile::Private::Private(const QString &filename_)
     : filename(filename_)
@@ -74,3 +75,5 @@ bool KDLockFile::unlock()
 {
     return d->unlock();
 }
+
+QRUNINFO_NAMEPASE_END

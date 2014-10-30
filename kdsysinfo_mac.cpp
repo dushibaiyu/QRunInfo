@@ -48,6 +48,7 @@
 #include <sys/types.h>
 
 #include <QtCore/QList>
+QRUNINFO_NAMEPASE_BEGIN
 
 quint64 QRunInfo::installedMemory()
 {
@@ -163,3 +164,4 @@ bool  QRunInfo::killProcess(const ProcessInfo &process, int msecs)
     return true;
 }
 
+QRUNINFO_NAMEPASE_END

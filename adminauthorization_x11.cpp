@@ -69,6 +69,7 @@
 #define SU_COMMAND "/usr/bin/sudo"
 //#define SU_COMMAND "/bin/echo"
 
+QRUNINFO_NAMEPASE_BEGIN
 
 static QString getPassword(QWidget *parent)
 {
@@ -259,9 +260,9 @@ bool AdminAuthorization::execute(QWidget *parent, const QString &program, const 
 }
 
 // has no guarantee to work
-bool AdminAuthorization::ishasAdminRights()
+bool AdminAuthorization::hasAdminRights()
 {
     return getuid() == 0;
 }
 
-
+QRUNINFO_NAMEPASE_END
