@@ -30,6 +30,9 @@ win32 {
     $$PWD/sysinfo_win.cpp
 
     LIBS += -lole32 -lshell32 -lmpr -lAdvapi32
+
+    win32-g++*:LIBS += -luuid
+    win32-g++*:QMAKE_CXXFLAGS += -Wno-missing-field-initializers
 }
 
 mac {
