@@ -50,14 +50,14 @@
 #include <QtCore/QList>
 QRUNINFO_NAMEPASE_BEGIN
 
-quint64 QRunInfo::installedMemory()
+quint64 RunInfo::installedMemory()
 {
     SInt32 mb = 0;
     Gestalt(gestaltPhysicalRAMSizeInMegabytes, &mb);
     return quint64(static_cast<quint64>(mb) * 1024LL * 1024LL);
 }
 
-QList<VolumeInfo>  QRunInfo::mountedVolumes()
+QList<VolumeInfo>  RunInfo::mountedVolumes()
 {
     QList<VolumeInfo> result;
     FSVolumeRefNum volume;
@@ -87,7 +87,7 @@ QList<VolumeInfo>  QRunInfo::mountedVolumes()
     return result;
 }
 
-QList<ProcessInfo>  QRunInfo::runningProcesses()
+QList<ProcessInfo>  RunInfo::runningProcesses()
 {
     int mib[4] = {
         CTL_KERN,
@@ -149,14 +149,14 @@ QList<ProcessInfo>  QRunInfo::runningProcesses()
     return processes;
 }
 
-bool  QRunInfo::pathIsOnLocalDevice(const QString &path)
+bool  RunInfo::pathIsOnLocalDevice(const QString &path)
 {
     Q_UNUSED(path);
 
     return true;
 }
 
-bool  QRunInfo::killProcess(const ProcessInfo &process, int msecs)
+bool  RunInfo::killProcess(const ProcessInfo &process, int msecs)
 {
     Q_UNUSED(process);
     Q_UNUSED(msecs);

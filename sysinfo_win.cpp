@@ -136,7 +136,7 @@ QList<VolumeInfo> localVolumeInfosFromMountPoints(PTCHAR volumeGUID)
 #endif
 }
 
-QList<VolumeInfo>  QRunInfo::mountedVolumes()
+QList<VolumeInfo>  RunInfo::mountedVolumes()
 {
     // suppress message box shown while accessing possible unmounted devices
     const UINT old = SetErrorMode(SEM_FAILCRITICALERRORS);
@@ -161,7 +161,7 @@ QList<VolumeInfo>  QRunInfo::mountedVolumes()
     return volumes;
 }
 
-bool  QRunInfo::pathIsOnLocalDevice(const QString &path)
+bool  RunInfo::pathIsOnLocalDevice(const QString &path)
 {
     if (!QFileInfo(path).exists())
         return false;
@@ -202,7 +202,7 @@ bool CALLBACK TerminateAppEnum(HWND hwnd, LPARAM lParam)
    return true;
 }
 
-bool  QRunInfo::killProcess(const ProcessInfo &process, int msecs)
+bool  RunInfo::killProcess(const ProcessInfo &process, int msecs)
 {
     DWORD dwTimeout = msecs;
     if (msecs == -1)

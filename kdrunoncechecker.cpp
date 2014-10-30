@@ -117,7 +117,7 @@ bool KDRunOnceChecker::isRunning(Dependencies depends)
         }
         break;
         case ProcessList: {
-            const QList<ProcessInfo> allProcesses = QRunInfo::runningProcesses();
+            const QList<ProcessInfo> allProcesses = RunInfo::runningProcesses();
             const QString appName = qApp->applicationFilePath();
             //QList< ProcessInfo >::const_iterator it = std::find_if(allProcesses.constBegin(), allProcesses.constEnd(), ProcessnameEquals(appName));
             const int count = std::count_if(allProcesses.constBegin(), allProcesses.constEnd(), ProcessnameEquals(appName));
@@ -125,7 +125,7 @@ bool KDRunOnceChecker::isRunning(Dependencies depends)
         }
         break;
         case Both: {
-            const QList<ProcessInfo> allProcesses = QRunInfo::runningProcesses();
+            const QList<ProcessInfo> allProcesses = RunInfo::runningProcesses();
             const QString appName = qApp->applicationFilePath();
             //QList<ProcessInfo>::const_iterator it = std::find_if(allProcesses.constBegin(), allProcesses.constEnd(), ProcessnameEquals(appName));
             const int count = std::count_if(allProcesses.constBegin(), allProcesses.constEnd(), ProcessnameEquals(appName));

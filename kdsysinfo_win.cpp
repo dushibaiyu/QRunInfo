@@ -52,7 +52,7 @@ QRUNINFO_NAMEPASE_BEGIN
 
 const int KDSYSINFO_PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
 
-quint64  QRunInfo::installedMemory()
+quint64  RunInfo::installedMemory()
 {
     MEMORYSTATUSEX status;
     status.dwLength = sizeof(status);
@@ -69,7 +69,7 @@ struct EnumWindowsProcParam
 typedef BOOL (WINAPI *QueryFullProcessImageNamePtr)(HANDLE, DWORD, char *, PDWORD);
 typedef DWORD (WINAPI *GetProcessImageFileNamePtr)(HANDLE, char *, DWORD);
 
-QList<ProcessInfo>  QRunInfo::runningProcesses()
+QList<ProcessInfo>  RunInfo::runningProcesses()
 {
     EnumWindowsProcParam param;
     HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);

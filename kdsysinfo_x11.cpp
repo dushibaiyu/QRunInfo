@@ -51,7 +51,7 @@
 
 QRUNINFO_NAMEPASE_BEGIN
 
-quint64 QRunInfo::installedMemory()
+quint64 RunInfo::installedMemory()
 {
 #ifdef Q_OS_LINUX
     QFile f(QLatin1String("/proc/meminfo"));
@@ -77,7 +77,7 @@ quint64 QRunInfo::installedMemory()
     return 0;
 }
 
-QList<VolumeInfo> QRunInfo::mountedVolumes()
+QList<VolumeInfo> RunInfo::mountedVolumes()
 {
     QList<VolumeInfo> result;
 
@@ -113,7 +113,7 @@ QList<VolumeInfo> QRunInfo::mountedVolumes()
     return result;
 }
 
-QList<ProcessInfo> QRunInfo::runningProcesses()
+QList<ProcessInfo> RunInfo::runningProcesses()
 {
     QList<ProcessInfo> processes;
     QDir procDir(QLatin1String("/proc"));
@@ -134,14 +134,14 @@ QList<ProcessInfo> QRunInfo::runningProcesses()
     return processes;
 }
 
-bool QRunInfo::pathIsOnLocalDevice(const QString &path)
+bool RunInfo::pathIsOnLocalDevice(const QString &path)
 {
     Q_UNUSED(path);
 
     return true;
 }
 
-bool QRunInfo::killProcess(const ProcessInfo &process, int msecs)
+bool RunInfo::killProcess(const ProcessInfo &process, int msecs)
 {
     Q_UNUSED(process);
     Q_UNUSED(msecs);

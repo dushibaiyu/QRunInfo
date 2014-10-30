@@ -86,7 +86,7 @@ struct ProcessInfo
     QString name;
 };
 
-class QRUNINFOSHARED_EXPORT QRunInfo
+class QRUNINFOSHARED_EXPORT RunInfo
 {
 public:
     static quint64  installedMemory();
