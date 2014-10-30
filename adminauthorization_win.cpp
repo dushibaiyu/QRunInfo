@@ -43,20 +43,21 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "adminauthorization.h"
+
 
 #include <QDebug>
 #include <QDir>
 #include <QSettings>
-
-#include <qt_windows.h>
 #include <ObjBase.h>
+#include "adminauthorization.h"
+#include "win32path.h"
 
 #ifdef Q_CC_MINGW
 # ifndef SEE_MASK_NOASYNC
 #  define SEE_MASK_NOASYNC 0x00000100
 # endif
 #endif
+
 
 QRUNINFO_NAMEPASE_BEGIN
 
@@ -100,20 +101,20 @@ static QString qt_create_commandline(const QString &program, const QStringList &
     return args;
 }
 
-struct DeCoInitializer
-{
-    DeCoInitializer()
-        : neededCoInit(CoInitialize(NULL) == S_OK)
-    {
-    }
-    ~DeCoInitializer()
-    {
-        if (neededCoInit)
-            CoUninitialize();
-    }
-    bool neededCoInit;
-    void noWarrning(){}
-};
+//struct DeCoInitializer
+//{
+//    DeCoInitializer()
+//        : neededCoInit(CoInitialize(NULL) == S_OK)
+//    {
+//    }
+//    ~DeCoInitializer()
+//    {
+//        if (neededCoInit)
+//            CoUninitialize();
+//    }
+//    bool neededCoInit;
+//    void noWarrning(){}
+//};
 
 bool AdminAuthorization::hasAdminRights()
 {

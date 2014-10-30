@@ -13,3 +13,4 @@ DEFINES += QRUNINFO
 DEFINES += QRUNINFO_LIBRARY
 
 include(QRunInfo.pri)
+

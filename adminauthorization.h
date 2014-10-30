@@ -52,6 +52,8 @@ class QRUNINFOSHARED_EXPORT AdminAuthorization
 public:
     static bool hasAdminRights();
     static bool execute(QWidget *parent, const QString &programs, const QStringList &arguments);
+private:
+    AdminAuthorization(){}
 };
 
 QRUNINFO_NAMEPASE_END
