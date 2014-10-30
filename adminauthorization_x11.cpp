@@ -259,7 +259,7 @@ bool AdminAuthorization::execute(QWidget *parent, const QString &program, const 
 }
 
 // has no guarantee to work
-bool AdminAuthorization::hasAdminRights()
+bool AdminAuthorization::ishasAdminRights()
 {
     return getuid() == 0;
 }

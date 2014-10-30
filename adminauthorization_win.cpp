@@ -43,20 +43,36 @@
 #pragma execution_character_set("utf-8")
 #endif
 
+#include <ObjBase.h>
+#include <qt_windows.h>
+
 #include "adminauthorization.h"
 
 #include <QDebug>
 #include <QDir>
 #include <QSettings>
 
-#include <qt_windows.h>
-#include <ObjBase.h>
+
 
 #ifdef Q_CC_MINGW
 # ifndef SEE_MASK_NOASYNC
 #  define SEE_MASK_NOASYNC 0x00000100
 # endif
 #endif
+
+struct DeCoInitializer
+{
+    DeCoInitializer()
+        : neededCoInit(CoInitialize(NULL) == S_OK)
+    {
+    }
+    ~DeCoInitializer()
+    {
+        if (neededCoInit)
+            CoUninitialize();
+    }
+    bool neededCoInit;
+};
 
 // taken from qprocess_win.cpp
 static QString qt_create_commandline(const QString &program, const QStringList &arguments)
@@ -98,46 +114,6 @@ static QString qt_create_commandline(const QString &program, const QStringList &
     return args;
 }
 
-QString createCommandline(const QString &program, const QStringList &arguments)
-{
-    return qt_create_commandline(program, arguments);
-}
-
-struct DeCoInitializer
-{
-    DeCoInitializer()
-        : neededCoInit(CoInitialize(NULL) == S_OK)
-    {
-    }
-    ~DeCoInitializer()
-    {
-        if (neededCoInit)
-            CoUninitialize();
-    }
-    bool neededCoInit;
-};
-
-bool AdminAuthorization::hasAdminRights()
-{
-    SID_IDENTIFIER_AUTHORITY authority = { SECURITY_NT_AUTHORITY };
-    PSID adminGroup;
-    // Initialize SID.
-    if (!AllocateAndInitializeSid(&authority,
-                                  2,
-                                  SECURITY_BUILTIN_DOMAIN_RID,
-                                  DOMAIN_ALIAS_RID_ADMINS,
-                                  0, 0, 0, 0, 0, 0,
-                                  &adminGroup))
-        return false;
-
-    BOOL isInAdminGroup = FALSE;
-    if (!CheckTokenMembership(0, adminGroup, &isInAdminGroup))
-        isInAdminGroup = FALSE;
-
-    FreeSid(adminGroup);
-    return isInAdminGroup;
-}
-
 //copied from qsystemerror.cpp in Qt
 static QString windowsErrorString(int errorCode)
 {
@@ -163,6 +139,27 @@ static QString windowsErrorString(int errorCode)
     return ret;
 }
 
+bool AdminAuthorization::ishasAdminRights()
+{
+    SID_IDENTIFIER_AUTHORITY authority = { SECURITY_NT_AUTHORITY };
+    PSID adminGroup;
+    // Initialize SID.
+    if (!AllocateAndInitializeSid(&authority,
+                                  2,
+                                  SECURITY_BUILTIN_DOMAIN_RID,
+                                  DOMAIN_ALIAS_RID_ADMINS,
+                                  0, 0, 0, 0, 0, 0,
+                                  &adminGroup))
+        return false;
+
+    BOOL isInAdminGroup = FALSE;
+    if (!CheckTokenMembership(0, adminGroup, &isInAdminGroup))
+        isInAdminGroup = FALSE;
+
+    FreeSid(adminGroup);
+    return (isInAdminGroup ? true : false);
+}
+
 bool AdminAuthorization::execute(QWidget *, const QString &program, const QStringList &arguments)
 {
     DeCoInitializer _;
@@ -171,7 +168,7 @@ bool AdminAuthorization::execute(QWidget *, const QString &program, const QStrin
     // administrator yet and the computer's policies are set to not use UAC (which is the case
     // in some corporate networks), the call to execute() will simply succeed and not at all
     // launch the child process. To avoid this, we detect this situation here and return early.
-    if (!hasAdminRights()) {
+    if (!ishasAdminRights()) {
         QLatin1String key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\"
             "Policies\\System");
         QSettings registry(key, QSettings::NativeFormat);
@@ -181,7 +178,7 @@ bool AdminAuthorization::execute(QWidget *, const QString &program, const QStrin
     }
 
     const QString file = QDir::toNativeSeparators(program);
-    const QString args = createCommandline(QString(), arguments);
+    const QString args = qt_create_commandline(QString(), arguments);
 
     SHELLEXECUTEINFOW shellExecuteInfo = { 0 };
     shellExecuteInfo.nShow = SW_HIDE;

@@ -84,7 +84,7 @@ bool AdminAuthorization::execute(QWidget *, const QString &program, const QStrin
     return status == errAuthorizationSuccess;
 }
 
-bool AdminAuthorization::hasAdminRights()
+bool AdminAuthorization::ishasAdminRights()
 {
     return geteuid() == 0;
 }
