@@ -3,13 +3,12 @@
 
 #include <QtCore/qglobal.h>
 
-#ifdef QRUNINFO
+
 #if defined(QRUNINFO_LIBRARY)
 #  define QRUNINFOSHARED_EXPORT Q_DECL_EXPORT
 #else
 #  define QRUNINFOSHARED_EXPORT Q_DECL_IMPORT
-#endif
-#else
+#elif define (QRUNINFO_NOLIB)
 #define QRUNINFOSHARED_EXPORT
 #endif
 

@@ -9,7 +9,6 @@ QT    += core gui widgets
 TARGET = $$qtLibraryTarget(QRunInfo)
 TEMPLATE = lib
 
-DEFINES += QRUNINFO
 DEFINES += QRUNINFO_LIBRARY
 
 include(QRunInfo.pri)
