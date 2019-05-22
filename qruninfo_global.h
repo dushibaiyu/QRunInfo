@@ -12,8 +12,6 @@
 #  define QRUNINFOSHARED_EXPORT Q_DECL_IMPORT
 #endif
 
-#define QRUNINFO_NAMEPASE_BEGIN namespace QRunInfo {
 
-#define QRUNINFO_NAMEPASE_END }
 
 #endif // QRUNINFO_GLOBAL_H

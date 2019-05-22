@@ -36,13 +36,13 @@
 
 #include <sys/utsname.h>
 #include <sys/statvfs.h>
-
+#include <unistd.h>
 #include <QtCore/QFile>
 #include <QtCore/QTextStream>
 #include <QtCore/QDir>
 #include <QtCore/QFileInfo>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 quint64 RunInfo::installedMemory()
 {
@@ -152,4 +152,4 @@ quint32 RunInfo::parentProcessId()
     return getppid();
 }
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

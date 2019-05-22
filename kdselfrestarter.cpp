@@ -38,7 +38,7 @@
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 class KDSelfRestarter::Private
 {
 public:
@@ -98,4 +98,4 @@ bool KDSelfRestarter::restartOnQuit()
 {
     return Private::instance ? Private::instance->d->restartOnQuit : false;
 }
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

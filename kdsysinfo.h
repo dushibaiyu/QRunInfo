@@ -39,7 +39,7 @@
 
 #include <QtCore/QString>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 class QRUNINFOSHARED_EXPORT VolumeInfo
 {
@@ -91,7 +91,7 @@ public:
     static quint32 parentProcessId();
 };
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END
 
 
 QT_BEGIN_NAMESPACE

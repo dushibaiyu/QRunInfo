@@ -82,7 +82,8 @@ typedef struct _REPARSE_DATA_BUFFER {
 #endif
 
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
+
 class FileHandleWrapper
 {
 public:
@@ -211,6 +212,9 @@ bool removeJunction(const QString &path)
     return QDir().rmdir(path);
 }
 #else
+
+namespace QRunInfo {
+
 Link createLnSymlink(const QString &linkPath, const QString &targetPath)
 {
     int linkedError = symlink(QFileInfo(targetPath).absoluteFilePath().toUtf8(),
@@ -299,4 +303,4 @@ bool Link::remove()
     return removeLnSymlink(m_path);
 #endif
 }
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

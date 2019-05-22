@@ -55,7 +55,7 @@
 #include <QDir>
 #include <QLibrary>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 VolumeInfo updateVolumeSizeInformation(const VolumeInfo &info)
 {
@@ -218,4 +218,4 @@ bool RunInfo::killProcess(const ProcessInfo &process, int msecs)
     return returnValue;
 }
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

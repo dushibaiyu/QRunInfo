@@ -52,7 +52,7 @@
 # endif
 #endif
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 // taken from qprocess_win.cpp
 static QString qt_create_commandline(const QString &program, const QStringList &arguments)
 {
@@ -180,4 +180,4 @@ bool AdminAuthorization::execute(QWidget *, const QString &program, const QStrin
     return false;
 }
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

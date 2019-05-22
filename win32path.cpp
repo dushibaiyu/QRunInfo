@@ -6,7 +6,7 @@
 typedef ITEMIDLIST *PIDLIST_ABSOLUTE;
 #endif
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 bool Win3SysPath::createLink(const QString &fileName, const QString &linkName,
                 const QString &arguments, const QString &iconPath,
@@ -71,4 +71,4 @@ QString Win3SysPath::getWinSysDir(SYSTEMPATH path)
     return QString::fromWCharArray(MyDir).replace("\\","/");
 }
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

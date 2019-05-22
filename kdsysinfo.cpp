@@ -37,7 +37,7 @@
 #include <QtCore/QDebug>
 #include <QtCore/QDir>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 struct PathLongerThan
 {
@@ -150,7 +150,7 @@ bool VolumeInfo::operator==(const VolumeInfo &other) const
     return m_volumeDescriptor == other.m_volumeDescriptor;
 }
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END
 
 QDebug operator<<(QDebug dbg, QRunInfo::VolumeInfo volume)
 {

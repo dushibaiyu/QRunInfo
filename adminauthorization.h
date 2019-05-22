@@ -38,7 +38,7 @@
 #include "qruninfo_global.h"
 #include <QWidget>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 class QRUNINFOSHARED_EXPORT AdminAuthorization
 {
@@ -49,6 +49,6 @@ public:
 private:
     AdminAuthorization(){}};
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END
 
 #endif // ADMINAUTHORIZATION_H

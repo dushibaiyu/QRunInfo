@@ -42,7 +42,9 @@
 
 #include <QtCore/QList>
 
-QRUNINFO_NAMEPASE_BEGIN
+#include <unistd.h>
+
+namespace QRunInfo {
 
 quint64 RunInfo::installedMemory()
 {
@@ -168,4 +170,4 @@ quint32 RunInfo::parentProcessId()
     return getppid();
 }
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

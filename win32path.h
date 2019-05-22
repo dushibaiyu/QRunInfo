@@ -8,7 +8,7 @@
 #include <qt_windows.h>
 #include <shlobj.h>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 struct DeCoInitializer
 {
@@ -81,6 +81,6 @@ private:
     Win3SysPath(){}
 };
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END
 
 #endif // COMMOM_H

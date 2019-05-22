@@ -42,7 +42,7 @@
 #include <tlhelp32.h>
 #include <winternl.h>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 const int KDSYSINFO_PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
 
@@ -159,4 +159,4 @@ quint32 RunInfo::parentProcessId()
     return id;
 }
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END

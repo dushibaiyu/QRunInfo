@@ -37,7 +37,7 @@
 
 #include "qruninfo_global.h"
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 class QRUNINFOSHARED_EXPORT KDSelfRestarter
 {
@@ -53,5 +53,5 @@ private:
     class Private;
     Private *d;
 };
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END
 #endif // KDTOOLS_KDSELFRESTARTER_H
