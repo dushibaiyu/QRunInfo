@@ -87,6 +87,8 @@ public:
     static QList<ProcessInfo> runningProcesses();
     static bool killProcess(const ProcessInfo &process, int msecs = 30000);
     static bool pathIsOnLocalDevice(const QString &path);
+    static quint32 currentProcessId();
+    static quint32 parentProcessId();
 };
 
 QRUNINFO_NAMEPASE_END

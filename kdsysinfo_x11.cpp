@@ -142,4 +142,14 @@ bool RunInfo::killProcess(const ProcessInfo &process, int msecs)
     return true;
 }
 
+quint32 RunInfo::currentProcessId()
+{
+    return  getpid();
+}
+
+quint32 RunInfo::parentProcessId()
+{
+    return getppid();
+}
+
 QRUNINFO_NAMEPASE_END

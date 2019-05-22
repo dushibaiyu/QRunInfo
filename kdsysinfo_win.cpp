@@ -40,10 +40,13 @@
 #include <qt_windows.h>
 #include <psapi.h>
 #include <tlhelp32.h>
+#include <winternl.h>
 
 QRUNINFO_NAMEPASE_BEGIN
 
 const int KDSYSINFO_PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
+
+typedef NTSTATUS ( * NtQueryInformationProcessPtr)(HANDLE ,PROCESSINFOCLASS ,PVOID ,ULONG ,PULONG );
 
 quint64  RunInfo::installedMemory()
 {
@@ -129,6 +132,31 @@ QList<ProcessInfo>  RunInfo::runningProcesses()
 
     kernel32.unload();
     return param.processes;
+}
+
+
+quint32 RunInfo::currentProcessId()
+{
+    DWORD id = GetCurrentProcessId();
+    return  id;
+}
+
+quint32 RunInfo::parentProcessId()
+{
+    DWORD id = static_cast<DWORD>(-1);
+    auto lib = LoadLibrary(L"Ntdll.dll");
+
+    if(lib){
+     NtQueryInformationProcessPtr ProcPtr = reinterpret_cast<NtQueryInformationProcessPtr>(GetProcAddress(lib, "NtQueryInformationProcess"));
+     if(ProcPtr){
+        HANDLE handle =  GetCurrentProcess();
+        PROCESS_BASIC_INFORMATION info;
+        auto status = ProcPtr(handle,ProcessBasicInformation,&info,sizeof (PROCESS_BASIC_INFORMATION),nullptr);
+        if (!status)
+            id = info.InheritedFromUniqueProcessId;
+     }
+    }
+    return id;
 }
 
 QRUNINFO_NAMEPASE_END
