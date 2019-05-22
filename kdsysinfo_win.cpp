@@ -143,7 +143,7 @@ quint32 RunInfo::currentProcessId()
 
 quint32 RunInfo::parentProcessId()
 {
-    DWORD id = static_cast<DWORD>(-1);
+    DWORD id = static_cast<DWORD>(0);
     auto lib = LoadLibrary(L"Ntdll.dll");
 
     if(lib){
