@@ -38,7 +38,7 @@
 #include "qruninfo_global.h"
 #include <QString>
 
-QRUNINFO_NAMEPASE_BEGIN
+namespace QRunInfo {
 
 class QRUNINFOSHARED_EXPORT Link
 {
@@ -55,5 +55,5 @@ private:
     QString m_path;
 };
 
-QRUNINFO_NAMEPASE_END
+} // QRUNINFO_NAMEPASE_END
 #endif // LINK_H
